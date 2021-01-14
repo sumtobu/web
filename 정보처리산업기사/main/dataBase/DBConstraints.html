@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <STYLE>
+        .Term{
+            font-weight: bold;
+        }
+        #Integrity{
+            display: inline;
+        }
+    </STYLE>
+    <TITLE>DBConstraints</TITLE>
+    <meta charset="utf-8" />
+</head>
+<body>
+   <div>     
+   <h1>관계형 DB 의 제약조건</h1>
+            제약 조건은 테이블의 데이터 열에 적용되는 규칙입니다. 
+            이들은 테이블에 들어갈 수있는 데이터 유형을 제한하는 데 사용됩니다. 
+            이는 데이터베이스에있는 데이터의 정확성과 신뢰성을 보장합니다.
+            제약 조건은 열 수준 또는 테이블 수준 일 수 있습니다. 
+            열 수준 제약 조건은 하나의 열에 만 적용
+            되는 반면 테이블 수준 제약 조건은 전체 테이블에 적용됩니다.
+            <BR>
+            다음은 SQL에서 가장 일반적으로 사용되는 제약 조건 중 일부입니다.
+   </div>
+   <A href="https://www.tutorialspoint.com/sql/sql-constraints.htm" target ="_blank">
+    제약조건의 자세한 내용 + 예</A>
+    <ul>
+        <li><DIV CLASS="Term">NOT NULL 제약조건</DIV>
+            열이 NULL 값을 가질 수 없도록 제한한다
+        </li>
+        <li><DIV CLASS="Term">DEFAULT 제약조건</DIV>
+            열에 지정된 값이 없을 경우 기본(DEFAULT) 값을 지정해 제공한다
+        </li>
+        <li><DIV CLASS="Term">PRIMARY Key</DIV>
+            해당 테이블에서 각 행(레코드)를 구분(식별)하기 위해
+            기본키로 지정한다
+        </li>
+        <li><DIV CLASS="Term">FOREIGN Key</DIV>
+            다른 테이블과의 관계에서 해당키로 참조(식별) 한다.
+        </li>
+    </ul>
+    <h2>무결성 제약</h2>
+    <div id="Integrity">데이터의 정확성과 일관성을 보장하는 데 사용되는 것
+    </div>
+    <ul>
+        <li><DIV CLASS="Term">개체 무결성</DIV>
+            테이블(릴레이션)에서 PRIMARY Key(기본키)는 NULL 값(NOT NULL 제약조건)<BR>
+            중복값을 가질 수 없다    
+        </li>
+        <li><DIV CLASS="Term">참조 무결성</DIV>
+            FOREIGN Key(외래키) 값은 NULL 이나 참조되는 테이블의 기본키 값과
+            값의 범위가 작거나 같아야 한다.<br> 참조될 수 없는 외래키 값을 가질 수 없다
+        </li>
+    </ul>
+   
+</body>
+</html>

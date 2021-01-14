@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <TITLE>Relational</TITLE>
+    <meta charset="utf-8" />
+    <link rel= "stylesheet" type="text/css" href="../../menu/menu.css">
+</head>
+<body>
+    <h1>관계 대수 관계 해석</h1>
+    <ul class="noneul">
+        <li><b>관계 대수</b>  
+            관계형 데이터베이스에서 정보를 검색하기 위해 어떻게 유도하는가를 기술하는
+         절차적인 언어</li>
+        <li>
+            피연산자와 결과 모두 릴레이션 이다.</li>
+        <li>순수 관계 연산자와 일반 집합 연산자로 나누어진다.</li>
+        <li>순수 관계 연산자 : Select, Project, Join, Division</li>
+        <li>일반 집합 연산자 : UNION(합집합), INTERSECTION(교집합), DEFFERENCE(차집합),
+             CARTESIAN PRODUCT(교차곱)
+        </li>
+    </ul>
+   <div>
+    <h2>순수 관계 연산자</h2>
+   </div>
+    <ul>
+        <li>Select 표기방식 : 시그마 (σ)<br>
+            기능 : 조건에 맞는 튜플 추출<br>
+            사용방법 : σ<조건>(table)
+        </li>
+        <li>Project 표기방식 : 파이 (π)<br>
+            기능 : 원하는 속성만 추출<br>
+            사용방법 : π<속성1,속성2>(table)
+        </li>
+        <li>Join 표기방식 : 파이 (▷◁)<br>
+            기능 : 두 개의 테이블에서 공통 속성을 중심으로 합쳐서 새로운 테이블 생성<br>
+            사용방법 : table1▷◁테이블1속성=테이블2속성 table2
+        </li>
+        <li>Division 표기방식 : ÷<br>
+            기능 : 두 개의 테이블에서 한 테이블이 다른 테이블의 부분 집합일때 큰 테이블에서 부분집합
+            테이블의 튜플만 구하는데 부분집합의 속성을 제외하고 구한다.<br>
+            사용방법 : 테이블1[t1속성 ÷ t2속성]테이블2 (테이블1에서 t2속성을 가진 튜플만 나오는
+            데 t2가 포함된 속성은 나오지 않음)
+        </li>
+    </ul>
+    
+</body>
+</html>

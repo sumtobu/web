@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <STYLE>
+        .Term{
+            font-weight: bold;
+        }
+        #Integrity{
+            display: inline;
+        }
+        table,th,td{
+        border : 1px solid;
+    }
+    </STYLE>
+   
+    <TITLE>Fileparing</TITLE>
+    <meta charset="utf-8" />
+</head>
+<body>
+   <div>     
+   <h1>파일편성</h1>
+            순차 파일(순서파일)Sequential File : 입력되는 데이터들을 논리적인 순서에 따라 물리적 연속 공간
+            에 순차적으로 기록하는 방식이다. 자기 테이프에서 사용<br>
+   </div>
+   <h2>색인 순차 파일 Indexed Sequential File</h2>
+    <ul>
+        <li>색인 순차 파일은 순차 처리와 랜덤 처리가 모두 가능하도록 레코드들을 키 값 순으로 정렬
+            시켜 기록하고, 레코드의 키 항목만을 모은 색인을 구성하여 편성하는 방식이다. 
+        </li>
+        <li>색인을 이용한 순차적인 접근방법을 제공하여 ISAM(Index Sequntial Access Method)라고 한다.
+        </li>
+        <li>레코드를 참조할 때 색인을 탐색한 후 색인이 가리키는 포인터(주소)를 이용해 직접 참조할 수 있다.
+        </li>
+        <li>일반적응로 자기 디스크에 많이 사용되며, 자기 테이프에서는 사용할 수 없다.
+        </li>
+    </ul>
+    <A href="https://zetawiki.com/wiki/%ED%8A%B8%EB%9E%99,_%EC%84%B9%ED%84%B0,_%EC%8B%A4%EB%A6%B0%EB%8D%94" target ="_blank">
+        트랙,실린더,섹터</A>
+    <h2>색인 순차 파일의 구성</h2>
+    <div id="Integrity">색인 순차 파일은 기본 구역, 색인 구역, 오버플로 구역으로 구성된다.</div>
+    </div>
+    <ul>
+        <li><DIV CLASS="Term">기본 구역(Prime Area)</DIV>
+                실제 레코드들을 기록하는 부분으로, 각 레코드는 키 값 순으로 저장된다.
+        </li>
+        <li><DIV CLASS="Term">색인 구역(Index Area)</DIV>
+                기본 구역에 있는 레코드들의 위치를 찾아가는 색인이 기록되는 부분으로,
+                트랙 색인 구역, 실린더 색인 구역, 마스터 색인 구역이 있다.
+            <table>
+                <tr>
+                    <th>트랙 색인 구역<br>
+                    Track Index Area</th>
+                    <td>기본 구역의 한 트랙상에 기록되어 있는 데이터 레코드 중의 최대 키 값과
+                        주소가 기록되는 색인으로, 한 실린더당 하나씩 만들어진다.<br>
+                        처리할 레코드가 실제로 어느 트랙에 기록되어 있는지 판별할 수 있게 한다.
+                    </td>
+                </tr>
+                <tr>
+                    <th>실린더 색인 구역<br>
+                    Cylinder Index Area</th>
+                    <td>각 트랙 색인의 최대키 값과 해당 레코드가 기록된 실린더의 정보가 
+                        기록되는 색인으로, 한 파일당 하나씩 만들어진다.
+                    </td>
+                </tr>
+                <tr>
+                    <th>마스터 색인 구역<br>
+                    Master Index Area</th>
+                    <td>실린더 색인 구역의 정보가 많을 경우 그것을 일정한 크기의 블록으로
+                        구성하는데, 이떄 해당 레코드가 어느 실린더 색인 구역에 기록되어 있는지를
+                         기록하는 색인이다.
+                    </td>
+                </tr>
+            </table>
+        </li>
+        <li><DIV CLASS="Term">오버플로 구역(Overflow Area)</DIV>
+            기본 구역에 빈 공간이 없어서 새로운 레코드의 삽입이 불가능할 때를 대비하여 예비적으로
+            확보해 둔  부분이다.
+            <table>
+                <tr>
+                    <th>실린더 오버플로 구역<br>
+                    Cylinder Overflow Area</th>
+                    <td>각 실린더마다 만들어지는 오버플로 구역으로, 해당 실린더의 기본 구역에서
+                         오버플로된 데이터를 기록한다.
+                    </td>
+                </tr>
+                <tr>
+                    <th>독립 오버플로 구역<br>
+                    Independent Overflow Area</th>
+                    <td>실린더 오버플로 구역에 더 이상 오버플로된 데이터를 기록할 수 없을때
+                         사용할 수 있는 예비 공간으로, 실린더 오버플로 구역과는 별도로 만들어진다.
+                    </td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+   
+</body>
+</html>

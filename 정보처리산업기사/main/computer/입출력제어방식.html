@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <TITLE>입.출력제어방식</TITLE>
+    <meta charset="utf-8" />
+    <link rel= "stylesheet" type="text/css" href="../../menu/menu.css">
+    <style>
+        table,td,th{
+            border : solid 1px black;
+        }
+        .width{
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>입.출력 제어방식</h1>
+    <ul class="noneul">
+        <li>Program에 의한 I/O : CPU관여있음 원시적 방식</li>
+        <li>Interrupt에 의한 I/O : CPU관여있음 원시적 방식</li>
+        <li>DMA에 의한 I/O : CPU관여없음 소형컴퓨터</li>
+        <li>Channel에 의한 I/O : CPU관여없음 대형 컴퓨터</li>
+        <LI>입.출력 처리 능력 순서 : 폴링(프로그램) < 인터럽트 < DMA < Channel </LI>
+    </ul>
+   <div>
+    <h2>Programmed I/O</h2>
+   </div>
+   <ul>
+        <li>원하는 I/O가 완료되었는지의 여부를 검사하기 위해서 CPU가 상태 Flag 를 계속 조사하여
+             완료되었으면 MDR(MBR)과 AC 사이의 자료전송도 CPU가 직접 처리하는 I/O 방식이다.
+        </li>
+        <OL><LI>
+            입출력의 대부분의 일을 CPU가 해주므로 Interface는 MDR(Memory Data Register),
+            Flag, 장치번호 디코더로만 구성하면 된다.</LI>
+        <LI>I/O 작업 시 CPU는 계속 I/O 작업에 관여해야 하기 때문에 다른 작업에 지장이 생긴다</LI>
+        </OL>
+    
+    </ul>
+    <div>
+        <h2>Interrupt I/O</h2>
+       </div>
+       <ul>
+            <li>CPU가 Flag를 게속 검사하지 않고, 데이터를 전송할 준비가 되면 입.출력 인터페이스가 
+                컴퓨터에게 알려 입.출력이 이루어지는 방식 
+            </li>
+            <OL><LI>
+                입.출력 인터페이스는 CPU에게 인터럽트 신호를 보내 입.출력이 있음을 알린다.</LI>
+            <LI>CPU는 작업을 수행하던 중 입.출력 인터럽트가 발생하면 수행중인 프로그램을 중단하고
+                 입.출력을 처리한 후 원래의 작업으로 돌아와 작업을 계속 수행한다.
+            </LI>
+            <LI>CPU가 계속 Flag를 검사하지 않아도 되기 때문에 Programmed I/O 보다 효율적이다.</LI>
+            <LI>대량의 자료 전송 시 CPU 부담을 증가시킨다.</LI>
+        </OL>
+        </ul>
+    </UL>
+    <div>
+        <h2>DMA(Direct Memory Access)에 의한 I/O</h2>
+       </div>
+       <ul>
+            <li>입출력 장치가 직접 주기억장치를 접근(Access) 하여 Data Block을 입출력하는 방식으로,
+                 입출력 전송이 cpu의 레지스터를 경유하지 않고 수행된다.
+            </li>
+            <OL><LI>
+                CPU는 I/O에 필요한 정보를 DMA 제어기에 알려서 I/O 동작을 개시시킨 후 I/O 
+                 동작에 더 이상 간섭하지 않고 다른 프로그램을 할당하여 수행한다.</LI>
+            <LI>DMA 방식은 입출력 자료 전송 시 CPU를 거치지 않기 때문에 CPU의 부담이 없어 보다 빠른
+                 데이터의 전송이 가능하다.
+            </LI>
+            <LI>DMA는 인터럽트 신호를 발생시켜 CPU에게 입출력 종료를 알린다.</LI>
+            <LI>DMA는 블록으로 대용량의 데이터를 전송할 수 있다.</LI>
+            <LI>DMA는 Cycle Steal 방식을 이용하여 데이터를 전송한다.</LI>
+            <li>CPU와 DMA 제어기는 메모리와 버스를 공유한다.</li>
+            <LI>CPU에서 DMA 제어기로 보내는 자료들</LI>
+            <OL>
+                <LI>- I/O 장치의 주소</LI>
+                <LI>- 데이터가 있는 주기억장치의 시작 주소</LI>
+                <LI>- DMA를 시작시키는 명령</LI>
+                <LI>- 입출력 하고자 하는 자료의 양</LI>
+                <LI>- 입력 또는 출력을 결정하는 명령</LI>
+            </OL>
+        </OL>
+        </ul>
+        <H2>DMA의 구성 요소</H2>
+        <OL>
+            <LI>- 인터페이스 회로 : CPU와 입출력 장치와의 통신 담당</LI>
+            <LI>- 주소 레지스터(Address Register) 및 주소 라인 : 기억장치의 위치 지정을 위한 번지 기억
+                 및 전송
+            </LI>
+            <li>- 워드 카운트 레지스터(Word Count Register) : 전송되어야 할 워드의 수 기억</li>
+            <li>- 제어 레지스터(Contol Register) : 전송 방식 결정</li>
+            <li>- 데이터 레지스터(Data Register) : 전송에 사용할 자료나 주소를 임시로 기억하는 버퍼
+                역할을 함
+            </li>
+        </OL>
+        <h2>DMA의 전송 절차</h2>
+        <OL>
+            <LI>1 CPU 가 DMA 제어기에게 명령을 내린다
+            </LI>
+            <LI>2 DMA 제어기가 CPU에게 버스 사용을 요구한다. BUS Request</LI>
+            <li>3 CPU가 DMA 제어기에게 버스 사용을 허가한다. BUS Grant</li>
+            <li>4 DMA 제어기가 주기억장치에서 데이터를 읽어 디스크로 전송한다. Data Transfer</li>
+            <li>5 2~4를 반복하다가 데이터 전송이 완료되면 인터럽트 신호를 보낸다.</li>
+        </OL>
+        <h2>Channel에 의한 I/O</h2>
+        <OL>
+            <LI>I/O를 위한 특별한 명령어를 I/O 프로세서에게 수행하도록 하여 CPU관여 없이 주기억장치와
+                 입출력장치 사이에서 입출력을 제어하는 입출력 전용프로세서(IOP)이다.
+            </LI>
+            <LI>DMA 제어기의 한계를 극복하기 위하여 고안된 방식이다.</LI>
+            <LI>채널은 DMA방법으로 입출력을 수행하므로 DMA의 확장된 개념으로 볼 수 있다.</LI>
+        </OL>
+    </UL>
+        <h3>채널의 특징</h3>
+        <ul>
+            <li>채널 제어기는 채널 명령어로 작성된 채널 프로그램을 해독하고 실행하여 입출력 동장을 처리한다.
+            </li>
+            <li>채널은 CPUㄹ부터 입출력 전송을 위한 명령어를 받으면 CPU와는 독립적으로 동작하여 
+                입출력을 완료한다
+            </li>
+            <LI>채널은 주기억장치에 기억되어 있는 채널 프로그램의 수행과 자료의 전송을 위하여
+                 주기억장치에 직접 접근한다.
+            </LI>
+            <LI>I/O 채널은 CPU의 I/O명령을 수행하지 않고 I/O 채널 내의 특수목적 명령을 수행한다.</LI>
+            <LI>채널은 CPU와 인터럽트로 통신한다.</LI>
+        </ul>
+        <H3>채널과  DMA의 비교</H3>
+        <UL>
+            <LI>채널 제어기는 채널 명령어로 작성된 채널 프로그램을 해독하고 실행하여 입출력 동작을 
+                처리한다.
+            </LI>
+            <LI>DMA방식과의 유사점 : <BR> 
+                - CPU에 대해 완전히 자율적으로 동작, 즉 CPU는 I/O 동작을 개시시킨 후 
+                I/O 동작에 더 이상 간섭하지 않고 다른 명령을 수행한다.<BR>
+                - 주기억장치를 직접 접근(Direct Access) 하여 I/O 명령을 수행하고 I/O 관련 자료를
+                 기론하거나 판독한다.
+            </LI>
+            <LI>DMA방식과의 차이점 : <BR>
+                - DMA는 한 개의 Instruction에 의해 한 개의 Block 만을 입출력 한다<br>
+                - Channel은 한 개의 Instruction에 의해 여러개의 Block을 입출력 한다.</LI>
+        </UL>
+        <h3>채널의 종류</h3>
+        <ul>
+            <li>Selector Channel(선택 채널) : - 고속 입출력장치(자기 디스크, 자기 테이프, 자기 드럼)
+                와 입출력하기 위해 사용한다. - 특정한 한 개의 장치를 독점하여 입출력한다.
+            </li>
+            <li>Multiplexer Channel(바이트 다중 채널) : - 저속 입출력장치(카드리더, 프린터)를 제어하는
+                 채널이다 - 동시에 여러 개의 입출력장치를 제어한다.
+            </li>
+            <li>Block Multiplexer Channel(블록 다중 채널) : - 고속 입출력장치를 제어하는 채널이다
+                - 동시에 여러 개의 입출력 장치를 제어한다. 
+            </li>
+        </ul>
+        <h3>채널 명령의 구성요소</h3>
+        <ol>
+            <li>명령코드 Operation Code : 입출력 명령을 지정함</li>
+            <li>데이터 주소 Data Address : 블록의 시작 주소를 표시함</li>
+            <li>플래그 Flag : 통신 목적이나 상태 기록을 위한 부분</li>
+            <li>워드 카운터 : 전송될 블록의 단어 수를 표시함</li>
+        </ol>  
+        <h3>Cycle Steal</h3>
+        <ol>
+            <li>데이터 채널(DMA 제어기)과 CPU가 주기억장치를 통해 동시에 Access할 때 우선순위를 
+                데이터 채널에게 주는 방식이다.
+            </li>
+            <li>한 번에 한 데이터 워드를 전송하고 버스의 제어를 CPU에게 돌려준다</li>
+            <li>입출력 자료의 전송을 빠르게 처리해준다.</li>
+            <li>Cycle Steal 시 중앙 처리장치는 메모리 참조가 필요 없는 오퍼레이션을 계속 수행한다.</li>
+        </ol>
+    </body>
+</html>

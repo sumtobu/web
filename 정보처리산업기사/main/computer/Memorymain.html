@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <TITLE>주기억장치</TITLE>
+    <meta charset="utf-8" />
+    <link rel= "stylesheet" type="text/css" href="../../menu/menu.css">
+    <style>
+        table,td,th{
+            border : solid 1px black;
+        }
+        .width{
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>주기억장치</h1>
+    <ul class="noneul">
+        <li>    
+            CPU가 직접 접근하여 처리할 수 있는 고속의 기억장치(Memory)로, 현재 수행되고있는
+         프로그램과 데이터를 저장하고 있다. 종류에는 롬(ROM)과 램(RAM)이 있다.</li>
+    </ul>
+   <div>
+    <h2>ROM(Read Only Memory)</h2>
+   </div>
+   <ul>
+        <li>기억된 내용을 읽을 수만 있는 기억장치로서 일반적으로 쓰기는 불가능하다.</li>
+        <li>전원이 꺼져도 기억된 내용이 지워지지 않는 비휘발성 메모리이다.</li>
+        <li>주로 BIOS와 같은 곳에 쓰인다 변경이 잘 되지 않는 시스템 소프트웨어</li>
+        <LI>ROM의 종류</LI>
+        <OL>
+            <LI>MASK ROM : 제조공장에서 프로그램화하여 생산한 ROM으로, 사용자가 변경 불가능</LI>
+            <LI>PROM(Programmable ROM) : PROM 프로그램 장치라는 특수 장비를 이용하여 비어 있는
+                ROM에 사용자가 한 번만 내용을 기입할 수 있으며 이후엔 읽기만 가능하다.
+            </LI>
+            <LI>EPROM(Erasable PROM) : 자외선을 쏘여서 기입한 내용을 지울 수도 있고,PROM 프로그램
+                 장치로 내용을 기록할 수도 있다. - UVEPROM(Ultra Violet Erasable PROM)
+                 이라고도 한다.<BR>사용자가 여러 번 반복하여 지우거나 기록할 수 있다.
+            </LI>
+            <LI>EAROM(Erasable Alterable ROM) : 전기적 특성을 이용하여 기록된 정보의 일부를 바꿀 수
+                 있는 ROM
+            </LI>
+            <LI>EEPROM(Electronic EPROM) : 전기적인 방법을 이용하여 기록된 내용을 여러 번 
+                수정하거나 새로운 내용을 기록할 수 있는 ROM 
+            </LI>
+        </OL>
+    </ul>
+    <div>
+        <h2>RAM(Random Access Memory)</h2>
+       </div>
+       <ul>
+            <li>자유롭게 읽고 쓸 수 있는 기억장치로, RWM(Read Write Memory) 라고도 한다.</li>
+            <li>현재 사용중인 프로그램이나 데이터가 저장되어 있다.</li>
+            <li>전원이 꺼지면 기억된 내용이 모두 사라지는 휘발성(Violet) 메모리이다.</li>
+            <li>일반적으로 말하는 주기억장치, 메모리를 말한다.</li>
+            <li>정보가 저장된 위치는 주소로 구분한다.</li>
+            <li>재충전 여부에 따라 동적 램(DRAM, Dynamic RAM)과 정적 램(SRAM, Static RAM) 으로 
+                 구분한다.
+            </li>
+        </ul>
+    <table>
+        <tr>
+            <th>구분</th>
+            <th>DRAM 동적 램</th>
+            <th>SRAM 정적 램</th>
+        </tr>
+        <tr>
+            <th class ='width'>구성 소자</th>
+            <td>콘덴서(캐패시터 Capacitor) : 전기를 저장할 수 있는 일종의 축전지</td>
+            <td>플립플롭 : 한 비트의 정보(0 또는 1)을 기억할 수 있는 기억소자 전자회로</td>
+        </tr>
+        <tr>
+            <th>특징</th>
+            <th>전원이 공급되어도 일정 시간이 지나면 전하가 방전되므로 주기적인 재충전(Refresh)이 
+                필요함
+            </th>
+            <th>전원이 공급되는 동안에는 기억 내용이 유지됨</th>
+        </tr>
+        <tr>
+            <th>전력 소모</th>
+            <th>적음</th>
+            <th>많음</th>
+        </tr>
+        <tr>
+            <th>접근 속도</th>
+            <th>느림</th>
+            <th>빠름</th>
+        </tr>
+        <tr>
+            <th>집적도<br>(밀도)</th>
+            <th>높음</th>
+            <th>낮음</th>
+        </tr>
+        <tr>
+            <th>가격</th>
+            <th>저가</th>
+            <th>고가</th>
+        </tr>
+        <tr>
+            <th>용도</th>
+            <th>일반적인 주 기억장치</th>
+            <th>캐시 메모리</th>
+        </tr>
+    </table>
+        <h2>반도체 기억소자의 구성도</h2>
+    
+        <ul>
+            <li>RAM은 칩 선택선(CS), 읽기 쓰기 선택선, 주소선, 양방향 데이터 버스<BR>
+                ROM은 칩 선택선(CS), 주소선, 단방향 데이터 버스로 이루어져 있다. 
+            </li>
+        </ul>
+        <img src = "../../img/RAMROM.jpg">
+        <OL>
+            <LI>CS1,CS2 : 칩 선택선으로 CS1=1, CS2=0이 되어야만 칩이 동작한다.</LI>
+            <LI>RD : 입력 신호선</LI>
+            <LI>WR : 출력 신호선</LI>
+            <LI>AD : 주소선, 주소선의 수는 지정할 수 있는 워드의 수를 나타낸다 주소선이 n
+                개 라면 2ⁿ개의 워드를 지정할 수 있다.
+            </LI>
+            <li>Data Bus : 워드의 크기를 나타낸다. 데이터 버스가 8Bit라면 워드의 크기가
+                 8Bit 이다.
+            </li>
+        </OL>
+        <h2>RAM ROM 용량계산</h2>
+        <ol><li>위 그림에서 RAM의 경우 AD가 7이고, BUS는 8Bit 이다. AD는 워드의 개수를 나타내고,
+            BUS는 워드의 크기를 나타냄으로, 워드의 개수 X 워드의 크기 = 2의 AD제곱 X 8Bit = 
+            128 x 8Bit의 용량이다</li>
+            <li>ROM은 AD가 9이고, BUS는 16Bit 이다. 2의9제곱 x 16Bit = 2의 13제곱Bit
+                <BR>*만약 워드의 크기에 대한 언급이 없을 경우 1BYTE로 본다.
+                <BR>*DR(Data Register)은 Data BUS의 크기와 같다. 워드의 크기
+            </li>
+            <li>주소선의 수는 주소를 지정하는 MAR의 크기, 다음 실행할 명령의 주소를 가지고 있는
+                PC의 크기와 같고, Data Bus의 비트 수는 읽어온 또는 저장할 자료를 잠시 보관하는
+                 MBR의크기, 읽어온 명령어를 저장하는 IR의 크기와 같다.
+            </li>
+        </ol>
+        
+</body>
+</html>

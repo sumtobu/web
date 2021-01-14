@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <TITLE>SQL</TITLE>
+    <meta charset="utf-8" />
+    <link rel= "stylesheet" type="text/css" href="../../menu/menu.css">
+</head>
+<body>
+    <h1>SQL</h1>
+    <ul class="noneul">
+        <li>    
+            국제표준 데이터베이스 언어</li>
+        <li>
+            정의, 조작, 제어의 기능으로 나누어져 있다.</li>
+        <li>
+            관계형 데이터베이스의 표준 질의어(Query Language)
+        <br>질의어 : 데이터베이스 파일과 범용 프로그래밍 언어를 정확히 알지 못하는
+            단말 사용자들이 단말기를 통해서 대화식으로 쉽게 DB를 이용할 수 있도록
+            되어 있는 비절차어의 일종이다.</li>
+        <li>
+            DDL(Data Define Language)정의어 DML(Data Manipulation Language) 
+            조작어 DCL(Data Control Language)제어어 로 나누어져 있다.</li>
+    </ul>
+   <div>
+    <h2>1.DDL(Data Define Language)정의어</h2>
+   </div>
+    <ul>
+        <li>SCHEMA, DOMAIN, TABLE, VIEW, INDEX를 정의하거나 변경 또는 삭제할 떄 사용하는
+            명령문이다<BR> DDL로 정의된 내용은 Meta-date가 되며, 시스템 카탈로그에 저장한다.
+            <br>Meta-data : 데이터를 관리하기 위한 데이터
+            <br>시스템 카탈로그 : 시스템 구성에 관련이 있는 객체들의 정보를 포함하는 시스템 데이터베이스 테이블  
+        </li>
+    </ul>
+    <div>
+        CREATE SCHEMA
+    </div>
+    <ul>
+        <li>
+            스키마를 정의하는 명령문 </li>
+        <li>
+            스키마의 식별을 위해 스키마 이름과 소유권자나 허가권자를 정의한다.</li>
+        <li>
+            표기형식 : CREATE SCHEMA 스키마_이름 AUTHORIZATION 사용자_ID;
+        </li>
+    </ul>   
+    <div>
+        CREATE DOMAIN
+    </div>
+    <ul>
+        <li>
+            도메인을 정의하는 명령문</li>
+        <li>
+            임의의 속성(Attribute)에서 취할 수 있는 원자값의 범위를 일부분으로 제한할 수 있다.</li>
+        <li>
+          표기형식<br>
+          CREATE DOMAIN 도메인_이름 data_type
+        <br>[DEFAULT 디폴트값_정의]
+        <BR>[CONSTRAINT VALID-도메인_이름 CHECK (범위)];
+        </li>
+        <li>
+        예시<BR>
+            CREATE SEX CHAR(1)<BR>
+            DEFAULT '?'<BR>
+            CONSTRAINT VALID-SEX CHECK(VALUE IN('남','여','?'));
+        </li>
+    </ul>
+    <div>
+        CREATE DOMAIN
+    </div>
+    <ul>
+        <li>
+            공사중
+        </li>
+    </ul>
+    <div>
+        <h2>2DML(Data Manipulation Language)조작어</h2>
+       </div>
+        <ul>
+            <li>UPDATE : 특정 튜플의 내용을 변경시킬때 사용
+            </li>
+            <li>
+                UPDATE 테이블명 SET 변경시킬내용 WHERE 조건;
+                ex) UPDATE 학생 SET 등급 = 'A' WHERE 점수 >= 90;
+            </li>
+        </ul>
+        <div>
+    <div>
+        <h2>3. DCL(Data Control Language)제어어</h2>
+       </div>
+        <ul>
+            <li>데이터의 사용 권한을 관리하는데 사용하며 GRANT, REVOKE문 등이 있다.
+               <BR>TCL인 COMMIT, ROLLBACK 까지 포함해서 DCL 이라고 분류하기도 한다.</li>
+        </ul>  
+    <div>
+        GRANT문
+    </div>
+    <ul>
+        <li>
+            특정 데이터베이스 사용자에게 특정 작업에 대한 수행 권한을 부여한다.</li>
+        <li>
+            표기형식<BR>
+            GRANT 권한
+            ON 데이터_개체
+            TO 사용자
+            [WITH GRANT OPTION];
+        </li>
+        <li>권한 종류 : ALL, SELECT, INSERT, DELETE, UPDATE, INDEX, ALTER등</li>
+        <li>사용자 종류 : 사용자 ID : 단순 사용자 <BR>
+            ROLE : 사용자에게 부여할 수 있는 권한들을 묶어서 하나의 이름을 정해 저장해 놓은것으로
+            쉽게 권한을 관리 할 수 있다.</li>
+        <li>public : 모든 사용자</li>
+        <li>WITH GRANT OPITON : 부여받은 권한을 다른 사용자에게 부여 할 수 있는 권한을 부여함</li>
+    </ul> 
+    <div>
+        REVOKE문
+    </div>
+    <ul>
+        <li>
+            특정 데이터베이스 사용자에게 특정 작업에 대한 수행 권한을 박탈 or 회수 한다.</li>
+    </ul>   
+</body>
+</html>

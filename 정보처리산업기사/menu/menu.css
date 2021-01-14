@@ -1,0 +1,18 @@
+ul{
+   
+    border: 1px solid gray; 
+}
+.ulTwo{
+    list-style-type: square;
+}
+
+li{
+    display: block;
+    width: 900px ; 
+}
+ol{
+    list-style-type: decimal;
+}
+.Term{
+    font-weight: bold;
+}
